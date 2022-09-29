@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
-    <script src="/script.js"></script>
+    <script src="script.js"></script>
     
     <title>dev.finance$</title>
 
@@ -17,7 +17,7 @@
 
 <body>
     <header>
-        <img src="/assets/logo.svg" alt="logo do site dev finance">
+        <img src="assets/logo.svg" alt="logo do site dev finance">
     </header>
     <main class="container">
         <section id="balance">
@@ -29,7 +29,7 @@
                     </span>
                     <img src="assets/income.svg" alt="imagem entrada de dinheiro é uma seta pra cima">   
                 </h3>
-                <p>R$ 5.000,00</p>
+                <p id="incomeDisplay">R$ 0,00</p>
             </div>
             <div class="card">
                 <h3>
@@ -39,7 +39,7 @@
                     <img src="assets/expense.svg" alt="imagem saída de dinheiro é uma seta pra baixo">   
                 </h3>
                 
-                <p>R$ 3.000,00</p>
+                <p id="expenseDisplay">R$ 0,00</p>
             </div>
             <div class="card total">
                 <h3>
@@ -48,7 +48,7 @@
                     </span>
                     <img src="assets/total.svg" alt="imagem de cifrão dinheiro">   
                 </h3>  
-                <p>R$ 2.000,00</p>
+                <p id="totalDisplay">R$ 0,00</p>
             </div>         
             
         </section>
@@ -69,39 +69,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="description">Criação de website</td>
-                        <td class="income">R$ 5000,00</td>
-                        <td class="date">23/01/2021</td>
-                        <td>
-                            <img src="assets/minus.svg" alt="botão de remover transação">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">Luz</td>
-                        <td class="expense">- R$ 500,00</td>
-                        <td class="date">23/01/2021</td>
-                        <td>
-                            <img src="assets/minus.svg" alt="botão de remover transação">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="description">Internet</td>
-                        <td class="expense">- R$ 200,00</td>
-                        <td class="date">23/01/2021</td>
-                        <td>
-                            <img src="assets/minus.svg" alt="botão de remover transação">
-                        </td>
-                    </tr>
+                
                 </tbody>
             </table>
         </section>
     </main>
-        <div class="modal-overlay">
+        
+    <div class="modal-overlay">
             <div class="modal">
                 <div id="form">
                     <h2>Nova Transação</h2>
-                    <form action="">
+                    <form action="" onsubmit="Form.submit(event)">
                         <div class="input-group">
                             <label 
                             class="sr-only" for="description">Descrição</label>
@@ -122,7 +100,7 @@
                                 name="amount"
                                 placeholder="0,00"
                             />    
-                            <small class="help">Use o sinal (- negativo) para despesas e (, - vírgula) para casas decimais</small>
+                            <small class="help">Use o sinal (-) negativo para despesas e (,) vírgula para casas decimais</small>
                         </div>
                         <div class="input-group">
                             <label 
@@ -144,6 +122,14 @@
             </div>
         </div>
 
+        <div id="toast">
+            <div class="img"><h1>×</h1></div>
+            <div class="description">Por favor, preencha todos os campos!</div>
+        </div>
+    
+        <a href="#" onclick="Modal.open()" class="float-button">
+            <img src="assets/float-plus.svg" alt="Adicionar" width="16px">
+        </a>
 
 
     <footer>
